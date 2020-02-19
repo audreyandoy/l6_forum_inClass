@@ -9,9 +9,14 @@ generalP = []
 def home():
   return flask.render_template('index.html')
 
-@app.route('/general')
+@app.route('/general', methods = ['GET', 'POST'])
 def general():
-  return flask.render_template('general.html')
+  if(request.method == 'GET'):
+    return flask.render_template('general.html', posts = generalP)
+  else:
+    post = request.json
+    generalP.append(post)
+    return flask.render_template('general.html', posts = generalP)
 
 @app.route('/games')
 def games():

@@ -3,7 +3,7 @@
 {% block content %}
 
 {% block header %}
-{% endblock $}
+{% endblock %}
 
 <!--Posts should go here-->
 
@@ -18,7 +18,8 @@
   <label>Post:</label><br />
   <textarea id="para" cols="50" rows="10"></textarea>
   <br />
-  <!--Button should go here-->
+{% block button %}
+{% endblock %}
 </div>
 
 {% endblock %}
