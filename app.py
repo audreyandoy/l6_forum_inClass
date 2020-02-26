@@ -4,6 +4,8 @@ from flask import request
 app = flask.Flask(__name__)
 
 generalP = []
+booksP = []
+gamesP = []
 
 @app.route('/')
 def home():
@@ -18,13 +20,20 @@ def general():
     generalP.append(post)
     return flask.render_template('general.html', posts = generalP)
 
-@app.route('/games')
+@app.route('/games', methods = ['GET', 'POST'])
 def games():
-  return flask.render_template('games.html')
+    if (request.method == 'GET'):
+        return flask.render_template('games.html')
+    else: 
+        post = request.json
+        gamesP.append(post)
+        return flask.render_template('games.html', posts = gamesP)
+   
 
 @app.route('/tv')
 def tv():
-  return flask.render_template('tv.html')
+   return flask.render_template('tv.html')
+
 
 @app.route('/books')
 def books():

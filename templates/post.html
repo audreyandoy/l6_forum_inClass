@@ -6,6 +6,12 @@
 {% endblock %}
 
 <!--Posts should go here-->
+{% for post in posts %}
+<h2>{{post['subject']}} </h2>
+<h3> by {{post['name']}}</h3>
+<p>{{post['post']}}</p>
+{% endfor %}
+
 
 <div id="postsSection"></div>
 <div id="post">
